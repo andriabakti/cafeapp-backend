@@ -7,8 +7,8 @@ const {upload} = require('../middlewares/multer')
 const redis = require('../middlewares/redis')
 
 router
-  .get('/', verifyAccess, pagination, productsController.getAllProduct)
-  .get('/:id', verifyAccess, redis.cacheGetAllProduct, productsController.getProductById)
+  .get('/', verifyAccess, redis.cacheGetAllProduct, pagination, productsController.getAllProduct)
+  .get('/:id', verifyAccess, productsController.getProductById)
   .post('/', verifyAccess, redis.clearGetAllProduct, upload.single('image'), productsController.insertProduct)
   .patch('/:id', verifyAccess, productsController.updateProduct)
   .delete('/:id', verifyAccess, productsController.deleteProduct)

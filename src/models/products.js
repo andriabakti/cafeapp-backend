@@ -5,16 +5,11 @@ const products = {
   getAllProduct: ({...arg}) => {
     console.log(arg)
     return actionQuery(
-      `SELECT * FROM products ${arg.search? 'WHERE name LIKE ?': ''} ORDER BY ?? ${arg.typeSort} LIMIT ${arg.limit} OFFSET ${arg.offset}`, arg.search ? [`%${arg.search}%`, arg.sortdata]:arg.sortdata
+      `SELECT products.*, category.categoryName FROM products INNER JOIN category ON products.idCategory = category.id ${arg.search? 'WHERE products.name LIKE ?': ''} ORDER BY ?? ${arg.typeSort} LIMIT ${arg.limit} OFFSET ${arg.offset}`, arg.search ? [`%${arg.search}%`, arg.sortdata]:arg.sortdata
       )
-    // return actionQuery(`SELECT products.*, category.categoryName FROM products INNER JOIN category ON products.idCategory = category.id`)
   },
   getProductById: (id) => {
     return actionQuery('SELECT * FROM products WHERE id= ?', id)
-  },
-  searchProduct: (search) => {
-    console.log(search)
-    return actionQuery('SELECT * FROM products WHERE name LIKE ?',`%${search}%`)
   },
   countproduct: () => {
     return actionQuery(`SELECT count(*) AS totalData FROM products`)

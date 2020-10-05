@@ -6,13 +6,15 @@ const client = redis.createClient(process.env.REDIS_PORT)
 const products = {
   getAllProduct: (req, res) => {
     const sortdata = req.query.sort || 'id'
-    const typeSort = req.query.typesort || 'ASC'
+    const typeSort = req.query.typesort || 'DESC'
     const search = req.query.search
-    const limit = req.query.limit || 9
+    const limit = req.query.limit || 6
     const offset = ((req.query.page || 1)-1) * limit
     productsModels.getAllProduct({sortdata, typeSort, search, limit, offset})
       .then((result) => {
         const resultProducts = result
+
+        client.setex('allproduct', 60*60*12, JSON.stringify(resultProducts))
         helpers.response(res, resultProducts, 200, null, req.paginations)
       })
       .catch((err) => {
@@ -24,8 +26,6 @@ const products = {
     productsModels.getProductById(id)
       .then((result) => {
         const resultProducts = result
-
-        client.set('allproduct', 60*60*12, JSON.stringify(resultProducts))
         helpers.response(res, resultProducts, 200, null)
       })
       .catch((err) => {
@@ -33,13 +33,12 @@ const products = {
       })
   },
   insertProduct: (req, res) => {
-    const { name, price, idCategory, status } = req.body
+    const { name, price, idCategory } = req.body
     const data = {
       name,
       price,
       image: `http://localhost:${process.env.PORT}/uploads/${req.file.filename}`,
       idCategory,
-      status,
       createdAt: new Date(),
       updatedAt: new Date()
     }
@@ -55,13 +54,12 @@ const products = {
   },
   updateProduct: (req, res) => {
     const id = req.params.id
-    const { name, price, image, idCategory, status } = req.body
+    const { name, price, image, idCategory } = req.body
     const data = {
       name,
       price,
       image,
       idCategory,
-      status,
       createdAt: new Date(),
       updatedAt: new Date()
     }

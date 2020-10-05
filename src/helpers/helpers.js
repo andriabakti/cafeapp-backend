@@ -20,17 +20,5 @@ module.exports = {
         }
       })
     })
-  },
-  actionQuery: (...arg) =>{
-    console.log(arg)
-    return new Promise((resolve, reject) => {
-      connection.query(...arg, (err, result) => {
-        if (!err) {
-          resolve(result)
-        } else {
-          reject(new Error(err))
-        }
-      })
-    })
   }
 }
