@@ -54,11 +54,11 @@ const products = {
   },
   updateProduct: (req, res) => {
     const id = req.params.id
-    const { name, price, image, idCategory } = req.body
+    const { name, price, idCategory } = req.body
     const data = {
       name,
       price,
-      image,
+      image: req.file.filename,
       idCategory,
       createdAt: new Date(),
       updatedAt: new Date()

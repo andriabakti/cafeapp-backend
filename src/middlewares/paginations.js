@@ -12,7 +12,7 @@ module.exports = {
         const paginations = {
             totalData,
             totalPage,
-            curentPage : page,
+            currentPage : page,
             perPage: limit,
             prevPage: page > 1 ?`http://localhost:${process.env.PORT}/api/v1/products?page=${page-1}${req.query.limit?'&limit='+limit:''}${search?'search='+search:''}`:null,
             nextPage:  page <  totalPage ?`http://localhost:${process.env.PORT}/api/v1/products?page=${page+1}${req.query.limit?'&limit='+limit:''}${search?'search='+search:''}`:null
