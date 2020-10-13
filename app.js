@@ -15,7 +15,7 @@ app.use(cors())
 // Use router
 app.use('/api/v1/', router)
 // Use upload
-app.use('./uploads', express.static('./uploads'))
+app.use('/uploads', express.static('./uploads'))
 // Run server
 app.listen(process.env.PORT, () => {
   console.log(`Server ${process.env.PORT} is running`)

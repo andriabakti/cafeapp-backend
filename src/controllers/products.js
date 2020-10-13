@@ -8,7 +8,7 @@ const products = {
     const sortdata = req.query.sort || 'id'
     const typeSort = req.query.typesort || 'DESC'
     const search = req.query.search
-    const limit = req.query.limit || 6
+    const limit = req.query.limit || 10
     const offset = ((req.query.page || 1)-1) * limit
     productsModels.getAllProduct({sortdata, typeSort, search, limit, offset})
       .then((result) => {
@@ -54,11 +54,11 @@ const products = {
   },
   updateProduct: (req, res) => {
     const id = req.params.id
-    const { name, price, idCategory } = req.body
+    const { name, price, image, idCategory } = req.body
     const data = {
       name,
       price,
-      image: req.file.filename,
+      image,
       idCategory,
       createdAt: new Date(),
       updatedAt: new Date()
