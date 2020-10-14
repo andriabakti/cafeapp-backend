@@ -4,7 +4,7 @@ module.exports = {
     books:async(req, res, next)=>{
         parseInt
         const page = parseInt(req.query.page) || 1
-        const limit = req.query.limit || 9;
+        const limit = req.query.limit || 6;
         const search = req.query.search
         const resultData = await productsModel.countproduct()
         const totalData = resultData[0].totalData
