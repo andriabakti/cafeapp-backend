@@ -6,6 +6,7 @@ module.exports = {
     cacheGetAllProduct: (req, res, next) => {
         client.get('allproduct', (err, data) => {
             if(err) throw err
+            if(req.query.search || req.query.sort) return next()
             if(data !== null) {
                 helpers.response(res, JSON.parse(data), 200)
             } else {

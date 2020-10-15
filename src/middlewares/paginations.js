@@ -1,7 +1,7 @@
 const productsModel = require('../models/products')
 
 module.exports = {
-    books:async(req, res, next)=>{
+    products:async(req, res, next)=>{
         parseInt
         const page = parseInt(req.query.page) || 1
         const limit = req.query.limit || 6;
