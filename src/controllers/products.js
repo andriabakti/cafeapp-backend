@@ -37,7 +37,7 @@ const products = {
     const data = {
       name,
       price,
-      image: `http://localhost:${process.env.PORT}/uploads/${req.file.filename}`,
+      image: `${process.env.URL}:${process.env.PORT}/uploads/${req.file.filename}`,
       idCategory,
       createdAt: new Date(),
       updatedAt: new Date()
@@ -58,7 +58,7 @@ const products = {
     const data = {
       name,
       price,
-      image: req.file.filename,
+      image: `${process.env.URL}:${process.env.PORT}/uploads/${req.file.filename}`,
       idCategory,
       createdAt: new Date(),
       updatedAt: new Date()
