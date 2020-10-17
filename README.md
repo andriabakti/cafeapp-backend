@@ -9,8 +9,8 @@ This API is for Cafetaria App.
 * [Redis](https://redis.io/)
 
 ## Requirements
-* [Database](dbcafeshop.sql)
 * [Node.js](https://nodejs.org/en/)
+* [Database](dbcafeshop.sql)
 * [Postman](https://www.getpostman.com/) for testing
 * [Redis](https://redis.io/)
 
@@ -52,17 +52,22 @@ npm run dev
 ```
 
 ### End Point
+
+...
 <b>1. Auth</b>
 <br>
 <b>- POST</b> /api/v1/users/register<br>
 <b>- POST</b> /api/v1/users/login<br>
 <br>
-<b>2. Products</b><br>
+<b>2. Products</b>
 <br>
 <b>- GET</b> /api/v1/products/<br>
 <b>- POST</b> /api/v1/products/<br>
 <b>- DELETE</b> /api/v1/products/:id<br>
 <b>- PATCH</b> /api/v1/products/:id<br>
+...
 
 ### Related Project
+...
 - [Cafetaria](https://github.com/andriabakti/cafeapp-frontend)
+...
