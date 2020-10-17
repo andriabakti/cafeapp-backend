@@ -51,9 +51,7 @@ URL = http://localhost
 npm run dev
 ```
 
-### End Point
-
-...
+## End Point
 <b>1. Auth</b>
 <br>
 <b>- POST</b> /api/v1/users/register<br>
@@ -65,9 +63,6 @@ npm run dev
 <b>- POST</b> /api/v1/products/<br>
 <b>- DELETE</b> /api/v1/products/:id<br>
 <b>- PATCH</b> /api/v1/products/:id<br>
-...
 
-### Related Project
-...
-- [Cafetaria](https://github.com/andriabakti/cafeapp-frontend)
-...
+## Related Project
+* [Cafetaria](https://github.com/andriabakti/cafeapp-frontend)
